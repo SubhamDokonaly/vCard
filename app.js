@@ -81,8 +81,7 @@ mongoose.connection.on("connected", () => {
 
         }, { stream: accessLogStream }));
 
-    // require("./routes/admin")(app);
-    // require("./routes/user")(app);
+    require("./routes/admin")(app);
     /** HTTP Server Instance */
     try {
         if (server.listening == false) {

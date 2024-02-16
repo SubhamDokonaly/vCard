@@ -13,9 +13,8 @@ let productSchema = mongoose.Schema({
         trim: true
     },
     image: {
-        type: String,
-        require: true,
-        trim: true
+        type: Object,
+        require: true
     },
     price: {
         type: String,
@@ -27,7 +26,7 @@ let productSchema = mongoose.Schema({
         require: true,
         trim: true
     },
-    decription: {
+    description: {
         type: String,
         require: true,
         trim: true

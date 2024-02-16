@@ -1,7 +1,8 @@
-const mongoose = require("mongoose")
-const ObjectId = mongoose.Schema.Types.ObjectId
+// const mongoose = require("mongoose")
+// import schemas
+const product = require("../models/product")
 const db = {
-  user
+  product
 }
 
 /**All mongoose queryfunction and normal functions */
@@ -162,8 +163,20 @@ const updateOneDocument = async (collection, filter, update) => {
 
 const findByIdAndUpdate = async (collection, id, update) => {
   try {
-    let filter = { _id: new ObjectId(id) };
-    let result = await db[collection].updateOne(filter, update)
+
+    let result = await db[collection].findByIdAndUpdate(id, update)
+
+    return result;
+  } catch (error) {
+    console.error("Error finding and updating document by ID: ", error)
+
+    throw error;
+  }
+}
+const getSingleDataById = async (collection, id, update) => {
+  try {
+
+    let result = await db[collection].findById(id, update)
 
     return result;
   } catch (error) {
@@ -279,5 +292,6 @@ module.exports = {
   deleteManyDocument,
   getAggregation,
   performCaseInsensitiveSearch,
-  findDocumentsWithLimit
+  findDocumentsWithLimit,
+  getSingleDataById
 }
